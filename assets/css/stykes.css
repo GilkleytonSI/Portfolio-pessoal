@@ -11,18 +11,23 @@ header {
     padding: 1rem 0;
     text-align: center;
     position: relative;
+    height: 80px; /* Aumentando a altura da barra de navegação */
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
 
 .menu-hamburguer {
     display: none;
     font-size: 1.5rem;
     cursor: pointer;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
 }
 
 nav ul {
@@ -126,8 +131,13 @@ footer {
     nav ul {
         flex-direction: column;
         display: none;
-        width: 100%;
+        position: fixed;
+        top: 0;
+        right: -100%; /* Inicialmente fora da tela */
+        height: 100%;
+        width: 200px;
         background-color: #333;
+        transition: right 0.3s ease;
     }
 
     nav ul li {
@@ -137,9 +147,6 @@ footer {
 
     .menu-hamburguer {
         display: block;
-        position: absolute;
-        top: 1rem;
-        right: 1rem;
     }
 
     .sobre-container {
@@ -156,5 +163,5 @@ footer {
 }
 
 nav ul.show {
-    display: flex;
+    right: 0; /* Traz o menu para dentro da tela */
 }
