@@ -1,8 +1,21 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const menuHamburguer = document.querySelector(".menu-hamburguer");
-    const navUl = document.querySelector("nav ul");
+const filtros = document.querySelectorAll('.filtro');
+const projetos = document.querySelectorAll('.projeto');
 
-    menuHamburguer.addEventListener("click", function() {
-        navUl.classList.toggle("show");
+filtros.forEach(filtro => {
+    filtro.addEventListener('click', function() {
+        // Remove a classe ativo de todos os botões
+        filtros.forEach(btn => btn.classList.remove('ativo'));
+        // Adiciona a classe ativo ao botão clicado
+        this.classList.add('ativo');
+
+        const categoria = this.getAttribute('data-filter');
+
+        projetos.forEach(projeto => {
+            if (categoria === 'todos' || projeto.getAttribute('data-category') === categoria) {
+                projeto.style.display = 'block';
+            } else {
+                projeto.style.display = 'none';
+            }
+        });
     });
 });
